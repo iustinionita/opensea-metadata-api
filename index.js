@@ -8,7 +8,7 @@ const rpc = require('./rpc.json');
 const express = require('express');
 const app = express();
 
-app.listen(3000, () => console.log("Server is online on port 3000"))
+app.listen(process.env.PORT || 3000, () => console.log("Server is online on port 3000"))
 
 let web3;
 
