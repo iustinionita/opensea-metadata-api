@@ -1,0 +1,7 @@
+{
+    "arbitrum": "https://arb1.arbitrum.io/rpc",
+    "avalanche": "https://api.avax.network/ext/bc/C/rpc",
+    "ethereum": "https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+    "optimism": "https://mainnet.optimism.io",
+    "matic": "https://polygon-rpc.com"
+}
