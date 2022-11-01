@@ -4,23 +4,20 @@ const Web3 = require('web3');
 const abi = require('./abi.json');
 const rpc = require('./rpc.json');
 const messages = require('./messages.json');
+const wakeup = require('./wakeup');
+
+wakeup()
 
 // Express setup
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
-// Prevent Heroku from sleeping
-// var https = require("https");
-// setInterval(function() {
-//     https.get("https://opensea-metadata-scraper.herokuapp.com/");
-// }, 180000); // every 3 minutes (180000)
-
 app.listen(process.env.PORT || 3000, () => console.log("Server is online on port 3000"));
 
 app.use((req, res, next) => {
     bodyParser.json()(req, res, (err) => {
-        if(req.body.link === undefined) return res.status(500).send(messages.no_link)
+        if(req.body.link === undefined) return res.status(200).send(messages.no_link)
         if(err) {
             console.log("Error in body-parser. Check the link");
             return res.status(500).send(messages.broken_link)
