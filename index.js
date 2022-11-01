@@ -10,6 +10,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+// Prevent Heroku from sleeping
+var https = require("https");
+setInterval(function() {
+    https.get("https://opensea-metadata-scraper.herokuapp.com/");
+    console.log("Wake up")
+}, 180000); // every 3 minutes (180000)
+
 app.listen(process.env.PORT || 3000, () => console.log("Server is online on port 3000"));
 
 app.use((req, res, next) => {
