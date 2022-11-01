@@ -26,7 +26,8 @@ app.use((req, res, next) => {
 let web3;
 
 app.get('/', (req, res) => {
-    const link = req.query.link || req.body.link;
+    // const link = req.query.link || req.body.link;
+    const link = req.body.link;
     console.log(`Fetching data from: ${link}`)
     getData(link)
     
