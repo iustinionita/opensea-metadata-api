@@ -20,7 +20,7 @@ app.use((req, res, next) => {
         if(req.body.link === undefined) return res.status(200).send(messages.no_link)
         if(err) {
             console.log("Error in body-parser. Check the link");
-            return res.status(500).send(messages.broken_link)
+            return res.status(400).send(messages.broken_link)
         }
         next();
     })
@@ -61,7 +61,7 @@ app.post('/', (req, res) => {
                 getMetadata(result);
             } else {
                 console.log(err.message);
-                res.status(500).send({
+                res.status(400).send({
                     ERROR: messages.broken_link,
                     SMART_CONTRACT_MESSAGE: err.message
                 })
