@@ -8,8 +8,8 @@ function getLink(link) {
         const nftId = nftLink.slice(nftLink.indexOf('/') + 1);
         return { chain, contract, nftId }
     } else {
-        console.log("This link is not on OpenSea");
-        return "This link is not on OpenSea"
+        console.log("Not an OpenSea link");
+        return "Please provide an OpenSea link"
     }
 }
 
