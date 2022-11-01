@@ -15,12 +15,16 @@ const bodyParser = require('body-parser');
 
 app.listen(process.env.PORT || 3000, () => console.log("Server is online on port 3000"));
 
+// CORS
+const cors = require('cors');
+app.use(cors())
+
 app.use((req, res, next) => {
     bodyParser.json()(req, res, (err) => {
-        if(req.body.link === undefined) return res.status(200).send(messages.no_link)
+        if(req.body.link === undefined) return res.status(200).send({message: messages.no_link})
         if(err) {
             console.log("Error in body-parser. Check the link");
-            return res.status(400).send(messages.broken_link)
+            return res.status(400).send({message: messages.broken_link})
         }
         next();
     })
@@ -35,7 +39,7 @@ app.post('/', (req, res) => {
     getData(link)
     
     function getData(userLink) {
-        if(getLink(userLink) === "wrong_link") return res.status(400).send(messages.wrong_link);
+        if(getLink(userLink) === "wrong_link") return res.status(400).send({message: messages.wrong_link});
         const { chain, contract, nftId } = getLink(userLink);
         const rpcURL = rpc[chain]
         if (rpcURL !== undefined) {
@@ -43,7 +47,7 @@ app.post('/', (req, res) => {
             getURI(contract, nftId);
         } else {
             console.log(chain.toUpperCase() + messages.wrong_chain);
-            res.status(400).send(chain.toUpperCase() + messages.wrong_chain)
+            res.status(400).send({message: chain.toUpperCase() + messages.wrong_chain})
         }
     }
     
