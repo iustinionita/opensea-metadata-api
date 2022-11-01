@@ -1,0 +1,6 @@
+{
+    "no_link": "Hi there 🖐🏼 \n Please send me the OpenSea NFT link and I will send you back the Metadata in JSON format. \n Example: https://opensea.io/assets/ethereum/0x7a1e98c559ff6676ec2aae3a821fe6e601d8b75b/4868",
+    "broken_link": "Oops 😕 It looks like something is wrong with your link...",
+    "wrong_link": "Hmm 🤔 It looks like your link is not from OpenSea...",
+    "wrong_chain": " chain is not supported."
+}

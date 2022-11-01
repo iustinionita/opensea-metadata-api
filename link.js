@@ -9,7 +9,7 @@ function getLink(link) {
         return { chain, contract, nftId }
     } else {
         console.log("Not an OpenSea link");
-        return "Please provide an OpenSea link"
+        return "wrong_link"
     }
 }
 
