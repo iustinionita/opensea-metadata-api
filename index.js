@@ -35,7 +35,7 @@ app.post('/', (req, res) => {
     getData(link)
     
     function getData(userLink) {
-        if(getLink(userLink) === "wrong_link") return res.status(500).send(messages.wrong_link);
+        if(getLink(userLink) === "wrong_link") return res.status(400).send(messages.wrong_link);
         const { chain, contract, nftId } = getLink(userLink);
         const rpcURL = rpc[chain]
         if (rpcURL !== undefined) {
@@ -43,7 +43,7 @@ app.post('/', (req, res) => {
             getURI(contract, nftId);
         } else {
             console.log(chain.toUpperCase() + messages.wrong_chain);
-            res.status(500).send(chain.toUpperCase() + messages.wrong_chain)
+            res.status(400).send(chain.toUpperCase() + messages.wrong_chain)
         }
     }
     
